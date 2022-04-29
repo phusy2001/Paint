@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Blend for Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paint", "Paint\Paint.csproj", "{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61737015-4928-4301-8AC4-D66716346C2A}
+	EndGlobalSection
+EndGlobal

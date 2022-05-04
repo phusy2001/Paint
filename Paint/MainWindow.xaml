@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paint"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <DockPanel LastChildFill="True">
+        <StackPanel Name="actionsStackPanel" Orientation="Horizontal" Height="50" DockPanel.Dock="Top">
+        </StackPanel>
+        <Grid>
+            <Canvas x:Name="canvas" Background="Gray" Focusable="False" >
+            </Canvas>
+            <Border Name="border" Background="Transparent" MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp">
+            </Border>
 
-    </Grid>
+        </Grid>
+    </DockPanel>
 </Window>

@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio Version 17
+# Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paint", "Paint\Paint.csproj", "{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paint", "Paint\Paint.csproj", "{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IContract", "IContract\IContract.csproj", "{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineEntity", "LineEntity\LineEntity.csproj", "{4EDAB550-BC37-4433-85A1-539930C8C099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleEntity", "RectangleEntity\RectangleEntity.csproj", "{6A4FDA06-962F-4687-9350-81D60AAC880C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllipseEntity", "EllipseEntity\EllipseEntity.csproj", "{4D79E008-0319-4459-A89C-9A8899FD4B04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDAB550-BC37-4433-85A1-539930C8C099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDAB550-BC37-4433-85A1-539930C8C099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDAB550-BC37-4433-85A1-539930C8C099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDAB550-BC37-4433-85A1-539930C8C099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A4FDA06-962F-4687-9350-81D60AAC880C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A4FDA06-962F-4687-9350-81D60AAC880C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A4FDA06-962F-4687-9350-81D60AAC880C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A4FDA06-962F-4687-9350-81D60AAC880C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

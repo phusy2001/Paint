@@ -15,19 +15,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing.Drawing2D;
+
 
 namespace Paint
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public abstract partial class MainWindow : Window
     {
         // State
+        //TODO: cho biết tên của hình
+        public string name { get; set; }
+        //TODO: cho biết điểm đầu của hình
+        public Point pointHead { get; set; }
+        //TODO: cho biết điểm cuối của hình
+        public Point pointTail { get; set; }
         bool _isDrawing = false;
         string _currentType = "";
         IShapeEntity _preview = null;
-        Point _start;
         List<IShapeEntity> _drawnShapes = new List<IShapeEntity>();
 
         // Cấu hình
@@ -106,6 +113,25 @@ namespace Paint
 
         }
 
+        /// Phương thức vẽ hình hiện tại lên graphics
+        /// </summary>
+        /// <param name="g">graphics</param>
+        public abstract void drawShape(System.Drawing.Graphics g);
+
+        /// <summary>
+        /// Phương thức di chuyển hình hiện tại với khoảng cách distance
+        /// </summary>
+        /// <param name="distance">khoảng cách</param>
+        public virtual void moveShape(Point distance)
+        {
+            pointHead = new Point(pointHead.X + distance.X, pointHead.Y + distance.Y);
+            pointTail = new Point(pointTail.X + distance.X, pointTail.Y + distance.Y);
+        }
+        /// Phương thức tạo ra đối tượng graphicsPath của hình
+        /// </summary>
+        protected abstract GraphicsPath graphicsPath { get; }
+
+
         // Đổi lựa chọn
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -119,9 +145,9 @@ namespace Paint
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             _isDrawing = true;
-            _start = e.GetPosition(canvas);
+            pointHead = e.GetPosition(canvas);
 
-            _preview.HandleStart(_start);
+            _preview.HandleStart(pointHead);
         }
 
         private void Border_MouseMove(object sender, MouseEventArgs e)

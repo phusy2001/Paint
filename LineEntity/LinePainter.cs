@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-
 namespace LineEntity
 {
     public class LinePainter : IPaintBusiness
@@ -29,6 +28,5 @@ namespace LineEntity
 
             return element;
         }
-        
     }
 }

@@ -16,23 +16,23 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" WindowState="Maximized" Loaded="Window_Loaded">
     <DockPanel LastChildFill="True">
-        <StackPanel x:Name="actionsStackPanel" Orientation="Horizontal" Height="50" DockPanel.Dock="Top">
-            <ToolBarTray>
+        <StackPanel x:Name="actionsStackPanel" Orientation="Horizontal" HorizontalAlignment="Center" Height="50" DockPanel.Dock="Top">
+            <ToolBarTray >
                 <ToolBar
                     Style="{StaticResource MaterialDesignToolBar}"
                     ClipToBounds="False">
-                    <Menu  IsMainMenu="True"  Height="48">
+                    <Menu IsMainMenu="True" Height="48">
                         <MenuItem Header="_File">
-                            <MenuItem Header="Save" Icon="{materialDesign:PackIcon Kind=ContentSave}"/>
-                            <MenuItem Header="Save As.." />
-                            <MenuItem Header="Exit" InputGestureText="Ctrl+E" Icon="{materialDesign:PackIcon Kind=ExitToApp}" />
+                            <MenuItem Header="Save" Icon="{materialDesign:PackIcon Kind=ContentSave}" Click="BtnSave_Click"/>
+                            <MenuItem Header="Save As.." Click="BtnSaveAs_Click"/>
+                            <MenuItem Header="Exit" InputGestureText="Ctrl+E" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Click="BtnExit_Click"/>
                             <Separator />
-                            <MenuItem Header="Import" IsCheckable="False"/>
-                            <MenuItem Header="Export" IsCheckable="False" />
+                            <MenuItem Header="Import" IsCheckable="False" Click="BtnImport_Click"/>
+                            <MenuItem Header="Export" IsCheckable="False" Click="BtnExport_Click"/>
                         </MenuItem>
                     </Menu>
                     <Separator />
-                    <ListBox SelectedIndex="0" x:Name="Select">
+                    <ListBox x:Name="Select">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
                     </ListBox>
                     <Separator />

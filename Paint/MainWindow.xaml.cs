@@ -46,6 +46,8 @@ namespace Paint
             var folderInfo = new DirectoryInfo(exeFolder);
             var dllFiles = folderInfo.GetFiles("*.dll");
 
+            MessageBox.Show(Shape.SelectedIndex.ToString());
+
             foreach (var dll in dllFiles)
             {
                 Assembly assembly = Assembly.LoadFrom(dll.FullName);
@@ -158,6 +160,30 @@ namespace Paint
             _preview.HandleEnd(end);
 
             _drawnShapes.Add(_preview.Clone() as IShapeEntity);
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save");
+        }
+
+        private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Save as");
+        }
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnImport_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Import file");
+        }
+
+        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Export file");
         }
     }
 }

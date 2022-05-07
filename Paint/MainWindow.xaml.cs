@@ -123,6 +123,7 @@ namespace Paint
             _start = e.GetPosition(canvas);
 
             _preview.HandleStart(_start);
+            _preview.SetThickness((int)ThicknessSlider.Value);    
         }
 
         private void Border_MouseMove(object sender, MouseEventArgs e)
@@ -203,6 +204,28 @@ namespace Paint
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
 
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                try
+                {
+                    myfileStream = new FileStream(saveFileDialog1.FileName, FileMode.Create);
+                    RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96d, 96d, PixelFormats.Default);
+                    rtb.Render(canvas);
+
+                    PngBitmapEncoder pngEnc = new PngBitmapEncoder();
+                    pngEnc.Frames.Add(BitmapFrame.Create(rtb));
+                    pngEnc.Save(myfileStream);
+                    MessageBox.Show("Picture was successfully exported!");
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to export file. Check the path.");
+                }
+                finally
+                {
+                    myfileStream.Close();
+                }
+            }
         }
 
         private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

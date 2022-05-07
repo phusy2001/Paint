@@ -9,6 +9,7 @@ namespace EllipseEntity
     {
         public Point TopLeft { get; set; }
         public Point RightBottom { get; set; }
+        public int Thickness { get; set; }
 
         public string Name => "Ellipse";
 
@@ -21,6 +22,10 @@ namespace EllipseEntity
         public void HandleEnd(Point point)
         {
             RightBottom = point;
+        }
+        public void SetThickness(int thickness)
+        {
+            Thickness = thickness;
         }
         public object Clone()
         {

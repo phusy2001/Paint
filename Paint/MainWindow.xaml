@@ -63,6 +63,7 @@
                     <StackPanel>
                         <Label x:Name="ThicknessLb" Content="Thickness"/>
                         <Slider Name="ThicknessSlider" Minimum="1" Maximum="5" ValueChanged="ThicknessSlider_ValueChanged"/>
+                        <Slider Name="ThicknessSlider" Minimum="1" Maximum="10"/>
                     </StackPanel>
                     <Separator />
                     <ListBox x:Name="Delete">

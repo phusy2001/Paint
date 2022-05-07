@@ -11,6 +11,7 @@ namespace LineEntity
         public Point Start { get; set; }
         public Point End { get; set; }
 
+        public int Thickness { get; set; }
 
         public string Name => "Line";
 
@@ -29,6 +30,11 @@ namespace LineEntity
         public void HandleStart(Point point)
         {
             Start = point;
+        }
+
+        public void SetThickness(int thickness)
+        {
+            Thickness = thickness;
         }
     }
 }

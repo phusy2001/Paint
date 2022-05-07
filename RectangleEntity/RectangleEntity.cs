@@ -10,6 +10,7 @@ namespace RectangleEntity
     {
         public Point TopLeft { get; set; }
         public Point RightBottom { get; set; }
+        public int Thickness { get; set; }
 
         public string Name => "Rectangle";
 
@@ -26,6 +27,10 @@ namespace RectangleEntity
         public object Clone()
         {
             return MemberwiseClone();
+        }
+        public void SetThickness(int thickness)
+        {
+            Thickness = thickness;
         }
     }
 }

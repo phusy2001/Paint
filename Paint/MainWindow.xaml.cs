@@ -241,5 +241,11 @@ namespace Paint
 
            curColor.Text = ColorPicker.SelectedColor.ToString();
         }
+
+        private void DeleteAllbtn_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.Children.Clear();
+            _drawnShapes.Clear();
+        }
     }
 }

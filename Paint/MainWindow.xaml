@@ -65,9 +65,7 @@
                         <Slider Name="ThicknessSlider" Minimum="1" Maximum="5" ValueChanged="ThicknessSlider_ValueChanged"/>
                     </StackPanel>
                     <Separator />
-                    <ListBox x:Name="Delete">
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=Delete}"/>
-                    </ListBox>
+                    <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>
                     <Separator />
                 </ToolBar>
             </ToolBarTray>

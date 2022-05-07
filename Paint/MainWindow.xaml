@@ -28,19 +28,12 @@
                             <MenuItem Header="Exit" InputGestureText="Ctrl+E" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Click="BtnExit_Click"/>
                             <Separator />
                             <MenuItem Header="Import background" IsCheckable="False" Click="BtnImport_Click"/>
-                            <MenuItem Header="Insert picture" IsCheckable="False" Click="Button_OpenFile_Click"/>
                             <MenuItem Header="Export picture" IsCheckable="False" Click="BtnExport_Click"/>
                         </MenuItem>
                     </Menu>
                     <Separator />
                     <ListBox x:Name="Select">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
-                    </ListBox>
-                    <Separator />-->
-                    <ListBox SelectedIndex="0" x:Name="Shape">
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=LineScan}"/>
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=EllipseOutline}" />
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=RectangleOutline}" />
                     </ListBox>
                     <Separator />
                     <!--<ListBox x:Name="Affine">

@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="PixiEditor.ColorPicker" Version="3.3.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
   </ItemGroup>
 
   <ItemGroup>

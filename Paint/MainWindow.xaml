@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Paint"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml" x:Class="Paint.MainWindow"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -48,6 +49,17 @@
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=ContentCopy}" />
                     </ListBox>
                     <Separator />
+                    <colorpicker:PortableColorPicker 
+                        SmallChange="5"
+                        Margin="20, 0, 20, 0" 
+                        UseHintColor="True" 
+                        HintColor="Transparent" 
+                        ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}" 
+                        SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}"  
+                        Width="40" Height="40" 
+                        ColorChanged="PortableColorPicker_ColorChanged" 
+                        x:Name="ColorPicker"/>
+                    <TextBlock x:Name="curColor" Margin="0, 20, 20, 0" Text="#FFF000000"></TextBlock>
                     <StackPanel>
                         <Label x:Name="ThicknessLb" Content="Thickness"/>
                         <Slider Name="ThicknessSlider" Minimum="1" Maximum="5" ValueChanged="ThicknessSlider_ValueChanged"/>

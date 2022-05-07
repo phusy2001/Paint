@@ -47,8 +47,6 @@ namespace Paint
             var folderInfo = new DirectoryInfo(exeFolder);
             var dllFiles = folderInfo.GetFiles("*.dll");
 
-            MessageBox.Show(Shape.SelectedIndex.ToString());
-
             foreach (var dll in dllFiles)
             {
                 Assembly assembly = Assembly.LoadFrom(dll.FullName);
@@ -210,6 +208,15 @@ namespace Paint
         private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void PortableColorPicker_ColorChanged(object sender, RoutedEventArgs e)
+        {
+            //SelectedColor dependency property stores the current color as System.Windows.Media.Color
+            //ColorChanged: An event that fires on SelectedColor change.
+            //ColorState dependency property contains all info about the current state of the control.Use this property to bind controls together.
+
+           curColor.Text = ColorPicker.SelectedColor.ToString();
         }
     }
 }

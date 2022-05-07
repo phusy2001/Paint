@@ -100,11 +100,18 @@ namespace Paint
                 var button = new Button();
                 if (name == "Image")
                 {
-                    button.Content = name;
+                    button.Content = "Insert image";
                     button.Tag = entity;
-                    button.Width = 80;
+                    button.Width = 125;
                     button.Height = 35;
                     button.Click += Button_OpenFile_Click;
+                } else if (name == "Rectangle")
+                {
+                    button.Content = name;
+                    button.Tag = entity;
+                    button.Width = 100;
+                    button.Height = 35;
+                    button.Click += Button_Click;
                 }
                 else
                 {
@@ -389,6 +396,11 @@ namespace Paint
                 _drawnShapes.Add(topStack);
                 ReDraw();
             }
+        }
+        private void moveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            action = "move";
+            _isDrawing = false;
         }
 
     }

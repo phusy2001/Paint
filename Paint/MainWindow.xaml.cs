@@ -198,7 +198,21 @@ namespace Paint
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Import file");
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                ImageBrush brush = new ImageBrush();
+                //string directoryPath = System.IO.Path.GetDirectoryName(openFileDialog1.FileName);
+                //brush.ImageSource = new BitmapImage(new Uri(directoryPath, UriKind.RelativeOrAbsolute));
+                brush.ImageSource = new BitmapImage(new Uri(openFileDialog1.FileName, UriKind.Relative));
+                canvas.Background = brush;
+
+                //using (var fileStream = new FileStream(directoryPath, FileMode.Create))
+                //{
+                //    ImageBrush brush = new ImageBrush();
+                //    brush.ImageSource = new BitmapImage(new Uri(directoryPath, UriKind.RelativeOrAbsolute));
+                //    canvas.Background = brush;
+                //}
+            }
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)

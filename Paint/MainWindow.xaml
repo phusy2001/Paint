@@ -28,7 +28,8 @@
                             <MenuItem Header="Save As.." Click="BtnSaveAs_Click"/>
                             <MenuItem Header="Exit" InputGestureText="Ctrl+E" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Click="BtnExit_Click"/>
                             <Separator />
-                            <MenuItem Header="Import" IsCheckable="False" Click="BtnImport_Click"/>
+                            <MenuItem Header="Import background" IsCheckable="False" Click="BtnImport_Click"/>
+                            <MenuItem Header="Insert picture" IsCheckable="False" Click="Button_OpenFile_Click"/>
                             <MenuItem Header="Export" IsCheckable="False" Click="BtnExport_Click"/>
                         </MenuItem>
                     </Menu>

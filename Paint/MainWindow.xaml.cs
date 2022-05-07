@@ -93,25 +93,25 @@ namespace Paint
             foreach (var (name, entity) in _shapesPrototypes)
             {
                 var button = new Button();
-                if (name == "Image")
-                {
-                    button.Content = name;
-                    button.Tag = entity;
-                    button.Width = 80;
-                    button.Height = 35;
-                    button.Click += Button_OpenFile_Click;
-                }
-                else
+                //if (name == "Image")
+                //{
+                //    button.Content = name;
+                //    button.Tag = entity;
+                //    button.Width = 80;
+                //    button.Height = 35;
+                //    button.Click += Button_OpenFile_Click;
+                //}
+                if (name != "Image")
                 {
                     button.Content = name;
                     button.Tag = entity;
                     button.Width = 80;
                     button.Height = 35;
                     button.Click += Button_Click;
+                    actionsStackPanel.Children.Add(button);
                 }
 
                 //TODO: thêm các nút bấm vào giao diện
-                actionsStackPanel.Children.Add(button);
             }
 
             if (_shapesPrototypes.Count > 0)
@@ -325,5 +325,24 @@ namespace Paint
         {
 
         }
+
+        //private void DrawLine_Selected(object sender, RoutedEventArgs e)
+        //{
+        //    //MessageBox.Show(Shape.SelectedValue.ToString());
+        //}
+
+        //private void DrawEllipse_Selected(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show(Shape.Items.ToString());
+        //}
+
+        //private void DrawRectangle_Selected(object sender, RoutedEventArgs e)
+        //{
+        //    var name = sender as ListBoxItem;
+        //    var entity = name!.Tag as IShapeEntity;
+
+        //    _currentType = entity!.Name;
+        //    _preview = (_shapesPrototypes[entity.Name].Clone() as IShapeEntity)!;
+        //}
     }
 }

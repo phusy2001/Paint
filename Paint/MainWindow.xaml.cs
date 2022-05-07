@@ -182,7 +182,6 @@ namespace Paint
 
         FileStream myfileStream = null;
         Stream myStream = null;
-        public String imgBuf = @"filebuff.png";
 
         OpenFileDialog openFileDialog1 = new OpenFileDialog
         {
@@ -202,7 +201,18 @@ namespace Paint
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Save");
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvas.RenderSize.Width,
+            (int)canvas.RenderSize.Height, 96d, 96d, System.Windows.Media.PixelFormats.Default);
+            rtb.Render(canvas);
+
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
+
+            using (var fs = System.IO.File.OpenWrite("filebuff.bmp")) 
+            {
+                pngEncoder.Save(fs);
+                MessageBox.Show("Picture was successfully saved in default directory with name 'filebuff.bmp'!");
+            }
         }
 
         private void BtnSaveAs_Click(object sender, RoutedEventArgs e)

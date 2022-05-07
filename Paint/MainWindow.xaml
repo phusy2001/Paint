@@ -62,7 +62,7 @@
                     <TextBlock x:Name="curColor" Margin="0, 20, 20, 0" Text="#FFF000000"></TextBlock>
                     <StackPanel>
                         <Label x:Name="ThicknessLb" Content="Thickness"/>
-                        <Slider Name="ThicknessSlider" Minimum="1" Maximum="5" ValueChanged="ThicknessSlider_ValueChanged"/>
+                        <Slider Name="ThicknessSlider" Minimum="1" Maximum="5"/>
                     </StackPanel>
                     <Separator />
                     <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>

@@ -34,21 +34,40 @@
                         </MenuItem>
                     </Menu>
                     <Separator />
-                    <ListBox x:Name="Select">
+                    <!--<ListBox x:Name="Select">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
                     </ListBox>
-                    <Separator />
+                    <Separator />-->
                     <ListBox SelectedIndex="0" x:Name="Shape">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=LineScan}"/>
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=EllipseOutline}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=RectangleOutline}" />
                     </ListBox>
                     <Separator />
-                    <ListBox x:Name="Affine">
+                    <!--<ListBox x:Name="Affine">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=MagnifyPlusOutline}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=RotateRight}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=ContentCopy}" />
                     </ListBox>
+                    <Separator />-->
+                    <WrapPanel>
+                        <Button
+                            Click="Undo_Click"
+                            Margin="0,5,5,0"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                            ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="Restore" />
+                        </Button>
+                        <Button
+                            Click="Redo_Click"
+                            Margin="0,5,5,0"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                            ToolTip="MaterialDesignFloatingActionMiniLightButton"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="Reload" />
+                        </Button>
+                    </WrapPanel>
                     <Separator />
                     <colorpicker:PortableColorPicker 
                         SmallChange="5"

@@ -37,7 +37,7 @@
                     </ListBox>
                     <Separator />
                     <ListBox SelectedIndex="0" x:Name="Shape">
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=LineScan}" />
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=LineScan}"/>
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=EllipseOutline}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=RectangleOutline}" />
                     </ListBox>
@@ -46,6 +46,15 @@
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=MagnifyPlusOutline}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=RotateRight}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=ContentCopy}" />
+                    </ListBox>
+                    <Separator />
+                    <StackPanel>
+                        <Label x:Name="ThicknessLb" Content="Thickness"/>
+                        <Slider Name="ThicknessSlider" Minimum="1" Maximum="5" ValueChanged="ThicknessSlider_ValueChanged"/>
+                    </StackPanel>
+                    <Separator />
+                    <ListBox x:Name="Delete">
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=Delete}"/>
                     </ListBox>
                     <Separator />
                 </ToolBar>

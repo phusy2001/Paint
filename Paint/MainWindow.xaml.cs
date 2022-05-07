@@ -1,4 +1,5 @@
 ﻿using IContract;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -162,6 +163,26 @@ namespace Paint
             _drawnShapes.Add(_preview.Clone() as IShapeEntity);
         }
 
+        FileStream myfileStream = null;
+        Stream myStream = null;
+        public String imgBuf = @"filebuff.png";
+
+        OpenFileDialog openFileDialog1 = new OpenFileDialog
+        {
+            InitialDirectory = Directory.GetCurrentDirectory(),
+            Filter = "All files (*.*)|*.*|PNG (*.png)|*.png",
+            FilterIndex = 2,
+            RestoreDirectory = true
+        };
+
+        SaveFileDialog saveFileDialog1 = new SaveFileDialog
+        {
+            InitialDirectory = Directory.GetCurrentDirectory(),
+            Filter = "JPEG (*.jpg)|*.jpg|BMP (*.bmp*)|*.bmp|PNG (*.png)|*.png|GIF (*.gif)|*.gif",
+            FilterIndex = 2,
+            RestoreDirectory = true
+        };
+
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Save");
@@ -183,7 +204,12 @@ namespace Paint
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Export file");
+
+        }
+
+        private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

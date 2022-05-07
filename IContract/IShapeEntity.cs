@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace IContract
@@ -14,6 +15,7 @@ namespace IContract
         void HandleStart(Point point);
         void HandleEnd(Point point);
         void SetThickness(int thickness);
+        void SetDashArray(DoubleCollection dasharray);
         void SetStrokeColor(string color);
     }
 }

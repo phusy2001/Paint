@@ -24,7 +24,9 @@ namespace LineEntity
                 Y2 = line.End.Y,
                 StrokeThickness = line.Thickness,
                 //Stroke = new SolidColorBrush(Colors.Black)
-                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(line.Color)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(line.Color),
+
+                StrokeDashArray = line.DashArray
             };
 
             return element;

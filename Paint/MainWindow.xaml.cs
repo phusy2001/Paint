@@ -143,6 +143,15 @@ namespace Paint
 
             _preview.HandleStart(_start);
             _preview.SetThickness((int)ThicknessSlider.Value);
+            if (StrokeType.SelectedIndex == 1)
+            {
+                _preview.SetDashArray(new DoubleCollection() { 2 });
+            }
+            if (StrokeType.SelectedIndex == 2)
+            {
+                _preview.SetDashArray(new DoubleCollection() { 1, 2, 4 });
+            }
+
             _preview.SetStrokeColor(ColorPicker.SelectedColor.ToString());
         }
 

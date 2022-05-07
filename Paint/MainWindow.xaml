@@ -80,9 +80,18 @@
                         ColorChanged="PortableColorPicker_ColorChanged" 
                         x:Name="ColorPicker"/>
                     <TextBlock x:Name="curColor" Margin="0, 20, 20, 0" Text="#FFF000000"></TextBlock>
-                    <StackPanel>
+                    <StackPanel Margin="0,0,20,0">
                         <Label x:Name="ThicknessLb" Content="Thickness"/>
                         <Slider Name="ThicknessSlider" Minimum="1" Maximum="5"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,10,20,0">
+                        <ComboBox
+                                x:Name="StrokeType"
+                                materialDesign:ComboBoxAssist.ClassicMode="{Binding ElementName=ClassicModeCheckBox, Path=IsChecked}">
+                            <ComboBoxItem IsSelected="True" Content="Dash"/>
+                            <ComboBoxItem Content="Dot" />
+                            <ComboBoxItem Content="Dash dot" />
+                        </ComboBox>
                     </StackPanel>
                     <Separator />
                     <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>

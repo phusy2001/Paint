@@ -1,6 +1,7 @@
 using IContract;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ImageEntity
@@ -14,6 +15,7 @@ namespace ImageEntity
         public string Name => "Image";
         public string Color { get; set; }
         public int Thickness { get; set; }
+        public DoubleCollection DashArray { get; set; }
         public BitmapImage Icon => new BitmapImage(new Uri(ImageUrl, UriKind.Relative));
         public BitmapImage Picture;
         public object Clone()
@@ -34,6 +36,10 @@ namespace ImageEntity
         public void HandleStart(Point point)
         {
             RightBottom = point;
+        }
+        public void SetDashArray(DoubleCollection dasharray)
+        {
+            DashArray = dasharray;
         }
         public void SetThickness(int thickness)
         {

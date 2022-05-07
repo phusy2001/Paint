@@ -33,7 +33,8 @@ namespace EllipseEntity
                 Height = height,
                 StrokeThickness = ellipse.Thickness,
                 //Stroke = new SolidColorBrush(Colors.Red)
-                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(ellipse.Color)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(ellipse.Color),
+                StrokeDashArray = ellipse.DashArray
             };
             Canvas.SetLeft(element, x);
             Canvas.SetTop(element, y);

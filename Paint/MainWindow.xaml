@@ -32,10 +32,6 @@
                         </MenuItem>
                     </Menu>
                     <Separator />
-                    <ListBox x:Name="Select">
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
-                    </ListBox>
-                    <Separator />
                     <!--<ListBox x:Name="Affine">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=MagnifyPlusOutline}" />
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=RotateRight}" />

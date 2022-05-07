@@ -25,16 +25,15 @@
                     <Menu IsMainMenu="True" Height="48">
                         <MenuItem Header="_File">
                             <MenuItem Header="Save" Icon="{materialDesign:PackIcon Kind=ContentSave}" Click="BtnSave_Click"/>
-                            <MenuItem Header="Save As.." Click="BtnSaveAs_Click"/>
                             <MenuItem Header="Exit" InputGestureText="Ctrl+E" Icon="{materialDesign:PackIcon Kind=ExitToApp}" Click="BtnExit_Click"/>
                             <Separator />
                             <MenuItem Header="Import background" IsCheckable="False" Click="BtnImport_Click"/>
                             <MenuItem Header="Insert picture" IsCheckable="False" Click="Button_OpenFile_Click"/>
-                            <MenuItem Header="Export" IsCheckable="False" Click="BtnExport_Click"/>
+                            <MenuItem Header="Export picture" IsCheckable="False" Click="BtnExport_Click"/>
                         </MenuItem>
                     </Menu>
                     <Separator />
-                    <!--<ListBox x:Name="Select">
+                    <ListBox x:Name="Select">
                         <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
                     </ListBox>
                     <Separator />-->
@@ -96,9 +95,12 @@
                     <Separator />
                     <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>
                     <Separator />
+                    <Button Content="Select" Name="moveBtn" Click="moveBtn_Click"></Button>
                 </ToolBar>
             </ToolBarTray>
+            
         </StackPanel>
+       
         <Grid>
             <Canvas x:Name="canvas" Background="Gray" Focusable="False"/>
             <Border x:Name="border" Background="Transparent" MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp" MouseWheel="border_MouseWheel" />

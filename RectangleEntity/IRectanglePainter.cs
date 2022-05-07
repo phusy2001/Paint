@@ -16,7 +16,7 @@ namespace RectangleEntity
         public UIElement Draw(IShapeEntity shape)
         {
             var rectangle = shape as RectangleEntity;
-
+            rectangle.SetControlPoints();
             var x = Math.Min(rectangle.RightBottom.X, rectangle.TopLeft.X);
             var y = Math.Min(rectangle.RightBottom.Y, rectangle.TopLeft.Y);
 
@@ -33,11 +33,10 @@ namespace RectangleEntity
                 Height = height,
                 StrokeThickness = rectangle.Thickness,
                 //Stroke = new SolidColorBrush(Colors.Red)
-                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(rectangle.Color)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(rectangle.Color),
             };
             Canvas.SetLeft(element, x);
             Canvas.SetTop(element, y);
-
             return element;
         }
     }

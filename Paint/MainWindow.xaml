@@ -95,7 +95,7 @@
                     <Separator />
                     <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>
                     <Separator />
-                    <Button Content="Select" Name="moveBtn" Click="moveBtn_Click"></Button>
+                    <!--<Button Content="Select" Name="moveBtn" Click="moveBtn_Click"></Button>-->
                 </ToolBar>
             </ToolBarTray>
             

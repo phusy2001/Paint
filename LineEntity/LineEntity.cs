@@ -15,6 +15,7 @@ namespace LineEntity
         public string Color { get; set; }
         public int Thickness { get; set; }    
         public DoubleCollection DashArray { get; set; }
+        public List<Point> ControlPoints { get; set; }
         public string Name => "Line";
 
         public void SetControlPoints()

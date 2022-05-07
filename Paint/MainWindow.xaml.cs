@@ -27,7 +27,7 @@ namespace Paint
         // State
         bool _isDrawing = false;
         string _currentType = "";
-         IShapeEntity _preview = null;
+        IShapeEntity _preview = null;
         Point _start;
         List<IShapeEntity> _drawnShapes = new List<IShapeEntity>();
 
@@ -62,7 +62,7 @@ namespace Paint
             {
                 Assembly assembly = Assembly.LoadFrom(dll.FullName);
 
-                 Type[] types = assembly.GetTypes();
+                Type[] types = assembly.GetTypes();
 
                 // Giả định: 1 dll chỉ có 1 entity và 1 business tương ứng
                 IShapeEntity? entity = null;
@@ -131,7 +131,7 @@ namespace Paint
         // Đổi lựa chọn
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
             action = "";
             var button = sender as Button;
             var entity = button!.Tag as IShapeEntity;
@@ -156,7 +156,7 @@ namespace Paint
         Point currPoint;
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(action != "move")
+            if (action != "move")
             {
                 _isDrawing = true;
                 _start = e.GetPosition(canvas);
@@ -165,7 +165,7 @@ namespace Paint
                 _preview.SetThickness((int)ThicknessSlider.Value);
                 _preview.SetStrokeColor(ColorPicker.SelectedColor.ToString());
             }
-            else if(action == "move")
+            else if (action == "move")
             {
                 _isDrawing = false;
                 pStart = e.GetPosition(canvas);
@@ -174,7 +174,7 @@ namespace Paint
                 {
                     if (item.CheckNear(currPoint))
                     {
-                         for(int i = 0; i < item.ControlPoints.Count; i++)
+                        for (int i = 0; i < item.ControlPoints.Count; i++)
                         {
                             var ellipse = new Ellipse() { Width = 5, Height = 7, Stroke = new SolidColorBrush(Colors.Red) };
                             ellipse.Fill = new SolidColorBrush(Colors.Red);
@@ -183,7 +183,7 @@ namespace Paint
                             canvas.Children.Add(ellipse);
                         }
                     }
-                    
+
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace Paint
 
         private void Border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if(action != "move")
+            if (action != "move")
             {
                 _isDrawing = false;
 
@@ -248,7 +248,7 @@ namespace Paint
             BitmapEncoder pngEncoder = new PngBitmapEncoder();
             pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
 
-            using (var fs = System.IO.File.OpenWrite("filebuff.bmp")) 
+            using (var fs = System.IO.File.OpenWrite("filebuff.bmp"))
             {
                 pngEncoder.Save(fs);
                 MessageBox.Show("Picture was successfully saved in default directory with name 'filebuff.bmp'!");
@@ -312,7 +312,7 @@ namespace Paint
             //ColorChanged: An event that fires on SelectedColor change.
             //ColorState dependency property contains all info about the current state of the control.Use this property to bind controls together.
 
-           curColor.Text = ColorPicker.SelectedColor.ToString();
+            curColor.Text = ColorPicker.SelectedColor.ToString();
         }
 
         private void DeleteAllbtn_Click(object sender, RoutedEventArgs e)
@@ -366,32 +366,13 @@ namespace Paint
             {
                 var painter = _painterPrototypes[item.Name];
                 var shape = painter.Draw(item);
-        private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            action = "move";
-        }
-
-        private void moveBtn_Click(object sender, RoutedEventArgs e)
-        {
-            action = "move";
-            _isDrawing = false;
-        }
-
                 canvas.Children.Add(shape);
             }
-        private void selectBtn_Click(object sender, RoutedEventArgs e)
-        {
-            action = "select";
-            _isDrawing = false;
         }
+
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
-            if(_drawnShapes.Count > 0)
+            if (_drawnShapes.Count > 0)
             {
                 var lastItem = _drawnShapes.Last();
                 _shapesStack.Push(lastItem);
@@ -402,12 +383,13 @@ namespace Paint
 
         private void Redo_Click(object sender, RoutedEventArgs e)
         {
-            if(_shapesStack.Count > 0)
+            if (_shapesStack.Count > 0)
             {
                 var topStack = _shapesStack.Pop();
                 _drawnShapes.Add(topStack);
                 ReDraw();
-            } 
+            }
         }
+
     }
 }

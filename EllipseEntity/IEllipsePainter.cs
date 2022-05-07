@@ -31,7 +31,6 @@ namespace EllipseEntity
             {
                 Width = width,
                 Height = height,
-                StrokeThickness = 1,
                 StrokeThickness = ellipse.Thickness,
                 Stroke = new SolidColorBrush(Colors.Red)
             };

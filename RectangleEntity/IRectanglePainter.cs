@@ -31,7 +31,6 @@ namespace RectangleEntity
             {
                 Width = width,
                 Height = height,
-                StrokeThickness = 1,
                 StrokeThickness = rectangle.Thickness,
                 Stroke = new SolidColorBrush(Colors.Red)
             };

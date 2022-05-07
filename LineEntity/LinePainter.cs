@@ -22,7 +22,6 @@ namespace LineEntity
                 Y1 = line.Start.Y,
                 X2 = line.End.X,
                 Y2 = line.End.Y,
-                StrokeThickness = 1,
                 StrokeThickness = line.Thickness,
                 Stroke = new SolidColorBrush(Colors.Black)
             };

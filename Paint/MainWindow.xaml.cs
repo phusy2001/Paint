@@ -31,6 +31,12 @@ namespace Paint
         Point _start;
         List<IShapeEntity> _drawnShapes = new List<IShapeEntity>();
 
+        //Support zooming 
+        private Double zoomMax = 5;
+        private Double zoomMin = 0.5;
+        private Double zoomSpeed = 0.001;
+        private Double zoom = 1;
+
         // Cấu hình
         Dictionary<string, IPaintBusiness> _painterPrototypes = new Dictionary<string, IPaintBusiness>();
         Dictionary<string, IShapeEntity> _shapesPrototypes = new Dictionary<string, IShapeEntity>();
@@ -243,11 +249,6 @@ namespace Paint
             }
         }
 
-        private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
         private void PortableColorPicker_ColorChanged(object sender, RoutedEventArgs e)
         {
             //SelectedColor dependency property stores the current color as System.Windows.Media.Color
@@ -261,6 +262,27 @@ namespace Paint
         {
             canvas.Children.Clear();
             _drawnShapes.Clear();
+        }
+
+
+        private void border_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            zoom += zoomSpeed * e.Delta; // Ajust zooming speed (e.Delta = Mouse spin value )
+            if (zoom < zoomMin) { zoom = zoomMin; } // Limit Min Scale
+            if (zoom > zoomMax) { zoom = zoomMax; } // Limit Max Scale
+
+            Point mousePos = e.GetPosition(canvas);
+
+            if (zoom > 1)
+            {
+                // transform Canvas size from mouse position
+                canvas.RenderTransform = new ScaleTransform(zoom, zoom, mousePos.X, mousePos.Y);
+            }
+            else
+            {
+                // transform Canvas size
+                canvas.RenderTransform = new ScaleTransform(zoom, zoom);
+            }
         }
     }
 }

@@ -71,8 +71,8 @@
             </ToolBarTray>
         </StackPanel>
         <Grid>
-            <Canvas x:Name="canvas" Background="Gray" Focusable="False" />
-            <Border x:Name="border" Background="Transparent" MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp"/>
+            <Canvas x:Name="canvas" Background="Gray" Focusable="False"/>
+            <Border x:Name="border" Background="Transparent" MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp" MouseWheel="border_MouseWheel" />
         </Grid>
     </DockPanel>
 </Window>

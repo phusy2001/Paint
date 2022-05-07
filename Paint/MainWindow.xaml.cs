@@ -123,7 +123,8 @@ namespace Paint
             _start = e.GetPosition(canvas);
 
             _preview.HandleStart(_start);
-            _preview.SetThickness((int)ThicknessSlider.Value);    
+            _preview.SetThickness((int)ThicknessSlider.Value);
+            _preview.SetStrokeColor(ColorPicker.SelectedColor.ToString());
         }
 
         private void Border_MouseMove(object sender, MouseEventArgs e)

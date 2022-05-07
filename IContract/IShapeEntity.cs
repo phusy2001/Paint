@@ -9,9 +9,11 @@ namespace IContract
         string Name { get; }
         BitmapImage Icon { get; }
         public int Thickness { get; set; }
+        public string Color { get; set; }
 
         void HandleStart(Point point);
         void HandleEnd(Point point);
         void SetThickness(int thickness);
+        void SetStrokeColor(string color);
     }
 }

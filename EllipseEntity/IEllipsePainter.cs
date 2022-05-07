@@ -32,7 +32,8 @@ namespace EllipseEntity
                 Width = width,
                 Height = height,
                 StrokeThickness = ellipse.Thickness,
-                Stroke = new SolidColorBrush(Colors.Red)
+                //Stroke = new SolidColorBrush(Colors.Red)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(ellipse.Color)
             };
             Canvas.SetLeft(element, x);
             Canvas.SetTop(element, y);

@@ -10,6 +10,7 @@ namespace EllipseEntity
         public Point TopLeft { get; set; }
         public Point RightBottom { get; set; }
         public int Thickness { get; set; }
+        public string Color { get; set; }
 
         public string Name => "Ellipse";
 
@@ -26,6 +27,10 @@ namespace EllipseEntity
         public void SetThickness(int thickness)
         {
             Thickness = thickness;
+        }
+        public void SetStrokeColor(string color)
+        {
+            Color = color;
         }
         public object Clone()
         {

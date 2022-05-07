@@ -32,7 +32,8 @@ namespace RectangleEntity
                 Width = width,
                 Height = height,
                 StrokeThickness = rectangle.Thickness,
-                Stroke = new SolidColorBrush(Colors.Red)
+                //Stroke = new SolidColorBrush(Colors.Red)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(rectangle.Color)
             };
             Canvas.SetLeft(element, x);
             Canvas.SetTop(element, y);

@@ -23,7 +23,8 @@ namespace LineEntity
                 X2 = line.End.X,
                 Y2 = line.End.Y,
                 StrokeThickness = line.Thickness,
-                Stroke = new SolidColorBrush(Colors.Black)
+                //Stroke = new SolidColorBrush(Colors.Black)
+                Stroke = (SolidColorBrush)new BrushConverter().ConvertFrom(line.Color)
             };
 
             return element;

@@ -11,6 +11,7 @@ namespace RectangleEntity
         public Point TopLeft { get; set; }
         public Point RightBottom { get; set; }
         public int Thickness { get; set; }
+        public string Color { get; set; }
 
         public string Name => "Rectangle";
 
@@ -31,6 +32,10 @@ namespace RectangleEntity
         public void SetThickness(int thickness)
         {
             Thickness = thickness;
+        }
+        public void SetStrokeColor(string color)
+        {
+            Color = color;
         }
     }
 }

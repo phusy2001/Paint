@@ -206,10 +206,6 @@ namespace Paint
             }
         }
 
-        private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Save as");
-        }
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

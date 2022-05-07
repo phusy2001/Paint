@@ -35,7 +35,7 @@
                     </Menu>
                     <Separator />
                     <ListBox x:Name="Select">
-                        <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}"/>
+                        <ListBoxItem Content="{materialDesign:PackIcon Kind=Select}" MouseDoubleClick="ListBoxItem_MouseDoubleClick"/>
                     </ListBox>
                     <Separator />
                     <ListBox SelectedIndex="0" x:Name="Shape">
@@ -68,9 +68,12 @@
                     <Separator />
                     <Button x:Name="DeleteAllbtn" Content="Clear all" FontWeight="Normal" Click="DeleteAllbtn_Click"/>
                     <Separator />
+                    <Button Content="Select" Name="moveBtn" Click="moveBtn_Click"></Button>
                 </ToolBar>
             </ToolBarTray>
+            
         </StackPanel>
+       
         <Grid>
             <Canvas x:Name="canvas" Background="Gray" Focusable="False"/>
             <Border x:Name="border" Background="Transparent" MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp" MouseWheel="border_MouseWheel" />

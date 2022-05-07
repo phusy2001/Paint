@@ -37,6 +37,9 @@ namespace Paint
         private Double zoomSpeed = 0.001;
         private Double zoom = 1;
 
+        //action
+        string action = "";
+
         // Cấu hình
         Dictionary<string, IPaintBusiness> _painterPrototypes = new Dictionary<string, IPaintBusiness>();
         Dictionary<string, IShapeEntity> _shapesPrototypes = new Dictionary<string, IShapeEntity>();
@@ -93,24 +96,23 @@ namespace Paint
             foreach (var (name, entity) in _shapesPrototypes)
             {
                 var button = new Button();
-                //if (name == "Image")
-                //{
-                //    button.Content = name;
-                //    button.Tag = entity;
-                //    button.Width = 80;
-                //    button.Height = 35;
-                //    button.Click += Button_OpenFile_Click;
-                //}
-                if (name != "Image")
+                if (name == "Image")
+                {
+                    button.Content = name;
+                    button.Tag = entity;
+                    button.Width = 80;
+                    button.Height = 35;
+                    button.Click += Button_OpenFile_Click;
+                }
+                else
                 {
                     button.Content = name;
                     button.Tag = entity;
                     button.Width = 80;
                     button.Height = 35;
                     button.Click += Button_Click;
-                    actionsStackPanel.Children.Add(button);
                 }
-
+                actionsStackPanel.Children.Add(button);
                 //TODO: thêm các nút bấm vào giao diện
             }
 
@@ -127,21 +129,52 @@ namespace Paint
         // Đổi lựa chọn
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
+            action = "";
             var button = sender as Button;
             var entity = button!.Tag as IShapeEntity;
 
             _currentType = entity!.Name;
             _preview = (_shapesPrototypes[entity.Name].Clone() as IShapeEntity)!;
-        }
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            _isDrawing = true;
-            _start = e.GetPosition(canvas);
-
-            _preview.HandleStart(_start);
             _preview.SetThickness((int)ThicknessSlider.Value);
             _preview.SetStrokeColor(ColorPicker.SelectedColor.ToString());
+        }
+
+        Point pStart;
+        Point pEnd;
+        Point currPoint;
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(action != "move")
+            {
+                _isDrawing = true;
+                _start = e.GetPosition(canvas);
+
+                _preview.HandleStart(_start);
+                _preview.SetThickness((int)ThicknessSlider.Value);
+                _preview.SetStrokeColor(ColorPicker.SelectedColor.ToString());
+            }
+            else if(action == "move")
+            {
+                _isDrawing = false;
+                pStart = e.GetPosition(canvas);
+                currPoint = e.GetPosition(canvas);
+                foreach (var item in _drawnShapes)
+                {
+                    if (item.CheckNear(currPoint))
+                    {
+                         for(int i = 0; i < item.ControlPoints.Count; i++)
+                        {
+                            var ellipse = new Ellipse() { Width = 5, Height = 7, Stroke = new SolidColorBrush(Colors.Red) };
+                            ellipse.Fill = new SolidColorBrush(Colors.Red);
+                            Canvas.SetLeft(ellipse, item.ControlPoints[i].X);
+                            Canvas.SetTop(ellipse, item.ControlPoints[i].Y);
+                            canvas.Children.Add(ellipse);
+                        }
+                    }
+                    
+                }
+            }
         }
 
         private void Border_MouseMove(object sender, MouseEventArgs e)
@@ -171,13 +204,20 @@ namespace Paint
 
         private void Border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            _isDrawing = false;
+            if(action != "move")
+            {
+                _isDrawing = false;
 
-            var end = e.GetPosition(canvas); // Điểm kết thúc
+                var end = e.GetPosition(canvas); // Điểm kết thúc
 
-            _preview.HandleEnd(end);
-
-            _drawnShapes.Add(_preview.Clone() as IShapeEntity);
+                _preview.HandleEnd(end);
+                _preview.SetControlPoints();
+                _drawnShapes.Add(_preview.Clone() as IShapeEntity);
+            }
+            else
+            {
+                pEnd = e.GetPosition(canvas);
+            }
         }
 
         FileStream myfileStream = null;
@@ -324,6 +364,23 @@ namespace Paint
         private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            action = "move";
+        }
+
+        private void moveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            action = "move";
+            _isDrawing = false;
+        }
+
+        private void selectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            action = "select";
+            _isDrawing = false;
         }
 
         //private void DrawLine_Selected(object sender, RoutedEventArgs e)

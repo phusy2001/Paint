@@ -93,11 +93,22 @@ namespace Paint
             foreach (var (name, entity) in _shapesPrototypes)
             {
                 var button = new Button();
-                button.Content = name;
-                button.Tag = entity;
-                button.Width = 80;
-                button.Height = 35;
-                button.Click += Button_Click;
+                if (name == "Image")
+                {
+                    button.Content = name;
+                    button.Tag = entity;
+                    button.Width = 80;
+                    button.Height = 35;
+                    button.Click += Button_OpenFile_Click;
+                }
+                else
+                {
+                    button.Content = name;
+                    button.Tag = entity;
+                    button.Width = 80;
+                    button.Height = 35;
+                    button.Click += Button_Click;
+                }
 
                 //TODO: thêm các nút bấm vào giao diện
                 actionsStackPanel.Children.Add(button);
@@ -283,6 +294,26 @@ namespace Paint
                 // transform Canvas size
                 canvas.RenderTransform = new ScaleTransform(zoom, zoom);
             }
+        }
+
+        private void Button_OpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var button = sender as Button;
+                var entity = button!.Tag as IShapeEntity;
+
+                _currentType = entity!.Name;
+                _preview = (_shapesPrototypes[entity.Name].Clone() as IShapeEntity)!;
+                _preview.SetImageLink(openFileDialog.FileName);
+            }
+
+        }
+
+        private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

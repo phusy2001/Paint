@@ -3,36 +3,38 @@ using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-
-namespace LineEntity
+namespace ImageEntity
 {
-    public class LineEntity : IShapeEntity, ICloneable
+    public class ImageEntity : IShapeEntity, ICloneable
     {
-        public Point Start { get; set; }
-        public Point End { get; set; }
+        public Point TopLeft { get; set; }
+        public Point RightBottom { get; set; }
+
+        public string ImageUrl { get; set; }
+        public string Name => "Image";
         public string Color { get; set; }
         public int Thickness { get; set; }
-
-        public string Name => "Line";
-
-        public BitmapImage Icon => new BitmapImage(new Uri("", UriKind.Relative));
-
-        public void SetImageLink(String link) { throw new NotImplementedException(); }
+        public BitmapImage Icon => new BitmapImage(new Uri(ImageUrl, UriKind.Relative));
+        public BitmapImage Picture;
         public object Clone()
         {
             return MemberwiseClone();
         }
 
+        public void SetImageLink(String link)
+        {
+            ImageUrl = link;
+        }
+
         public void HandleEnd(Point point)
         {
-            End = point;
+            TopLeft = point;
         }
 
         public void HandleStart(Point point)
         {
-            Start = point;
+            RightBottom = point;
         }
-
         public void SetThickness(int thickness)
         {
             Thickness = thickness;

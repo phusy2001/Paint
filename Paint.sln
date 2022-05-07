@@ -5,13 +5,15 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paint", "Paint\Paint.csproj", "{DA79B030-20D3-4F5E-AA91-8F56A4AC7EF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IContract", "IContract\IContract.csproj", "{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IContract", "IContract\IContract.csproj", "{EE972E45-EDE3-42AF-A8E5-4A417FBB1A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineEntity", "LineEntity\LineEntity.csproj", "{4EDAB550-BC37-4433-85A1-539930C8C099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LineEntity", "LineEntity\LineEntity.csproj", "{4EDAB550-BC37-4433-85A1-539930C8C099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleEntity", "RectangleEntity\RectangleEntity.csproj", "{6A4FDA06-962F-4687-9350-81D60AAC880C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectangleEntity", "RectangleEntity\RectangleEntity.csproj", "{6A4FDA06-962F-4687-9350-81D60AAC880C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EllipseEntity", "EllipseEntity\EllipseEntity.csproj", "{4D79E008-0319-4459-A89C-9A8899FD4B04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EllipseEntity", "EllipseEntity\EllipseEntity.csproj", "{4D79E008-0319-4459-A89C-9A8899FD4B04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageEntity", "ImageEntity\ImageEntity.csproj", "{C4B94930-E917-4D9A-BE98-874B001668ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D79E008-0319-4459-A89C-9A8899FD4B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B94930-E917-4D9A-BE98-874B001668ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B94930-E917-4D9A-BE98-874B001668ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B94930-E917-4D9A-BE98-874B001668ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B94930-E917-4D9A-BE98-874B001668ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

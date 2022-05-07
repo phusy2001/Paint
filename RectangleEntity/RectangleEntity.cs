@@ -17,6 +17,7 @@ namespace RectangleEntity
 
         public BitmapImage Icon => throw new NotImplementedException();
 
+        public void SetImageLink(String link) { throw new NotImplementedException(); }
         public void HandleStart(Point point)
         {
             TopLeft = point;

@@ -27,7 +27,7 @@ namespace Paint
         // State
         bool _isDrawing = false;
         string _currentType = "";
-        IShapeEntity _preview = null;
+         IShapeEntity _preview = null;
         Point _start;
         List<IShapeEntity> _drawnShapes = new List<IShapeEntity>();
 
@@ -43,6 +43,8 @@ namespace Paint
         // Cấu hình
         Dictionary<string, IPaintBusiness> _painterPrototypes = new Dictionary<string, IPaintBusiness>();
         Dictionary<string, IShapeEntity> _shapesPrototypes = new Dictionary<string, IShapeEntity>();
+
+        Stack<IShapeEntity> _shapesStack = new Stack<IShapeEntity>();
 
         public MainWindow()
         {
@@ -60,7 +62,7 @@ namespace Paint
             {
                 Assembly assembly = Assembly.LoadFrom(dll.FullName);
 
-                Type[] types = assembly.GetTypes();
+                 Type[] types = assembly.GetTypes();
 
                 // Giả định: 1 dll chỉ có 1 entity và 1 business tương ứng
                 IShapeEntity? entity = null;
@@ -184,17 +186,8 @@ namespace Paint
                 var end = e.GetPosition(canvas);
                 _preview.HandleEnd(end);
 
-                // Xóa đi tất cả bản vẽ cũ và vẽ lại những đường thẳng trước đó
-                canvas.Children.Clear(); // Xóa đi toàn bộ
 
-                // Vẽ lại những hình đã vẽ trước đó
-                foreach (var item in _drawnShapes)
-                {
-                    var painter = _painterPrototypes[item.Name];
-                    var shape = painter.Draw(item);
-
-                    canvas.Children.Add(shape);
-                }
+                ReDraw();
 
                 var previewPainter = _painterPrototypes[_preview.Name];
                 var previewElement = previewPainter.Draw(_preview);
@@ -221,8 +214,6 @@ namespace Paint
         }
 
         FileStream myfileStream = null;
-        Stream myStream = null;
-
         OpenFileDialog openFileDialog1 = new OpenFileDialog
         {
             InitialDirectory = Directory.GetCurrentDirectory(),
@@ -361,6 +352,15 @@ namespace Paint
 
         }
 
+        private void ReDraw()
+        {
+            canvas.Children.Clear(); // Xóa đi toàn bộ
+
+            // Vẽ lại những hình đã vẽ trước đó
+            foreach (var item in _drawnShapes)
+            {
+                var painter = _painterPrototypes[item.Name];
+                var shape = painter.Draw(item);
         private void ThicknessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -377,29 +377,32 @@ namespace Paint
             _isDrawing = false;
         }
 
+                canvas.Children.Add(shape);
+            }
         private void selectBtn_Click(object sender, RoutedEventArgs e)
         {
             action = "select";
             _isDrawing = false;
         }
+        private void Undo_Click(object sender, RoutedEventArgs e)
+        {
+            if(_drawnShapes.Count > 0)
+            {
+                var lastItem = _drawnShapes.Last();
+                _shapesStack.Push(lastItem);
+                _drawnShapes.Remove(lastItem);
+                ReDraw();
+            }
+        }
 
-        //private void DrawLine_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    //MessageBox.Show(Shape.SelectedValue.ToString());
-        //}
-
-        //private void DrawEllipse_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    MessageBox.Show(Shape.Items.ToString());
-        //}
-
-        //private void DrawRectangle_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    var name = sender as ListBoxItem;
-        //    var entity = name!.Tag as IShapeEntity;
-
-        //    _currentType = entity!.Name;
-        //    _preview = (_shapesPrototypes[entity.Name].Clone() as IShapeEntity)!;
-        //}
+        private void Redo_Click(object sender, RoutedEventArgs e)
+        {
+            if(_shapesStack.Count > 0)
+            {
+                var topStack = _shapesStack.Pop();
+                _drawnShapes.Add(topStack);
+                ReDraw();
+            } 
+        }
     }
 }
